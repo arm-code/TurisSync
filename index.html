@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - TurisSync</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-tabs">
+      <button class="tab-button active" data-tab="login">Iniciar Sesión</button>
+      <button class="tab-button" data-tab="register">Registrarse</button>
+    </div>
+    
+    <div id="login" class="tab-content active">
+      <form id="login-form" class="login-form">
+        <h2>TurisSync</h2>
+        <div class="form-group">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email" id="login-email" placeholder="Correo" required>
+        </div>
+        <div class="form-group">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" id="login-password" placeholder="Contraseña" required>
+        </div>
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        <button type="submit" class="btn">Iniciar Sesión</button>
+      </form>
+    </div>
+    
+    <div id="register" class="tab-content">
+      <form id="register-form" class="login-form">
+        <h2>Registro</h2>
+        <div class="form-group">
+          <ion-icon name="person-outline"></ion-icon>
+          <input type="text" id="register-name" placeholder="Nombre Completo" required>
+        </div>
+        <div class="form-group">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email" id="register-email" placeholder="Correo" required>
+        </div>
+        <div class="form-group">
+          <ion-icon name="id-card-outline"></ion-icon>
+          <input type="text" id="register-chofer-id" placeholder="ID de Chofer">
+        </div>
+        <div class="form-group">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" id="register-password" placeholder="Contraseña" required>
+        </div>
+        <div class="form-group">
+          <ion-icon name="lock-open-outline"></ion-icon>
+          <input type="password" id="register-confirm-password" placeholder="Confirmar Contraseña" required>
+        </div>
+        <button type="submit" class="btn">Registrarse</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> 
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

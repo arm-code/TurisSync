@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Choferes - TurisSync</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="admin-header">
+      <h1 id="admin-username">admin1 <span class="admin-badge">Administrador</span></h1>
+      <button id="logout-btn" class="btn logout">Cerrar Sesión</button>
+    </header>
+
+    <nav class="admin-tabs">
+      <button id="tab-horarios" class="tab-button active" data-tab="horarios">Horarios</button>
+      <button id="tab-rutas" class="tab-button" data-tab="rutas">Rutas</button>
+    </nav>
+
+    <section id="horarios-section" class="tab-content active">
+      <div class="section-header">
+        <h2>Mis Horarios</h2>
+        <button id="new-schedule" class="btn">+ Nuevo Horario</button>
+      </div>
+      
+      <div id="form-horario" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <h3>Nuevo Horario</h3>
+          <form id="horario-form">
+            <div class="form-group">
+              <label for="fecha">Fecha:</label>
+              <input type="date" id="fecha" required>
+            </div>
+            <div class="form-group">
+              <label for="horaInicio">Hora Inicio:</label>
+              <input type="time" id="horaInicio" required>
+            </div>
+            <div class="form-group">
+              <label for="horaFin">Hora Fin:</label>
+              <input type="time" id="horaFin" required>
+            </div>
+            <div class="form-group">
+              <label for="ruta">Ruta Asignada:</label>
+              <select id="ruta" required>
+                <option value="">Cargando rutas...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="chofer">Chofer:</label>
+              <input type="text" id="chofer" required>
+            </div>
+            <button type="submit" class="btn">Guardar</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="lista-horarios" class="schedule-list">
+        <p>Cargando horarios...</p>
+      </div>
+    </section>
+
+    <section id="rutas-section" class="tab-content">
+      <div class="section-header">
+        <h2>Gestión de Rutas</h2>
+        <button id="new-route" class="btn">+ Nueva Ruta</button>
+      </div>
+      
+      <div id="form-ruta" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <h3>Nueva Ruta</h3>
+          <form id="ruta-form">
+            <div class="form-group">
+              <label for="nombreRuta">Nombre de la Ruta:</label>
+              <input type="text" id="nombreRuta" required>
+            </div>
+            <div class="form-group">
+              <label for="descripcionRuta">Descripción:</label>
+              <textarea id="descripcionRuta" rows="3"></textarea>
+            </div>
+            
+            <h4>Paradas de la Ruta</h4>
+            <div id="lista-paradas">
+              <!-- Paradas se agregarán aquí dinámicamente -->
+            </div>
+            
+            <button type="button" id="agregar-parada" class="btn btn-secondary">+ Agregar Parada</button>
+            
+            <div class="form-actions">
+              <button type="submit" class="btn">Guardar Ruta</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="lista-rutas" class="route-list">
+        <p>Cargando rutas...</p>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+2025-06-05 22:31:04 - 
+2025-06-05 22:31:04 - Action: getAll
+2025-06-05 22:31:20 - {"action":"create","fecha":"2025-06-05","horaInicio":"14:31","horaFin":"16:31","ruta_id":"1","chofer_id":"5458"}
+2025-06-05 22:31:20 - Action: create
+
+2025-06-05 14:50:52 - Solicitud recibida: 
+2025-06-05 14:51:07 - Solicitud recibida: {"action":"create","fecha":"2025-06-05","horaInicio":"15:50","horaFin":"17:51","ruta_id":"1","chofer_id":"5458"}
+2025-06-05 14:51:07 - Error chofer no existe: {"success":false,"message":"El chofer seleccionado no existe o no es v\u00e1lido","chofer_id":"5458"}
+2025-06-05 14:51:34 - Solicitud recibida: 
+2025-06-05 14:51:52 - Solicitud recibida: {"action":"create","fecha":"2025-06-05","horaInicio":"14:51","horaFin":"16:51","ruta_id":"1","chofer_id":"5458"}
+2025-06-05 14:51:52 - Error chofer no existe: {"success":false,"message":"El chofer seleccionado no existe o no es v\u00e1lido","chofer_id":"5458"}
+2025-06-05 14:52:11 - Solicitud recibida: {"action":"create","fecha":"2025-06-05","horaInicio":"14:51","horaFin":"16:51","ruta_id":"1","chofer_id":"1"}
+2025-06-05 14:52:11 - Horario creado: {"success":true,"message":"Horario creado exitosamente","horario_id":2}
+2025-06-05 14:52:12 - Solicitud recibida: 
