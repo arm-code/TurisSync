@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     
     // Validar que todos los campos estén presentes
-    if (!isset($data['name'], $data['email'], $data['choferId'], $data['password'], $data['confirmPassword'])) {
+    if (!isset($data['name'], $data['email'], $data['choferId'], $data['userType'], $data['password'], $data['confirmPassword'])) {
         echo json_encode(['success' => false, 'message' => 'Todos los campos son requeridos']);
         exit;
     }
@@ -15,11 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($data['name']);
     $email = trim($data['email']);
     $choferId = trim($data['choferId']);
+    $userType = trim($data['userType']);
     $password = $data['password'];
     $confirmPassword = $data['confirmPassword'];
     
     // Validaciones adicionales
-    if (empty($name) || empty($email) || empty($choferId) || empty($password)) {
+    if (empty($name) || empty($email) || empty($choferId) || empty($userType) || empty($password)) {
         echo json_encode(['success' => false, 'message' => 'Ningún campo puede estar vacío']);
         exit;
     }
@@ -50,15 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     
-    // Hash más seguro para la contraseña (mejor que SHA2)
+    // Hash más seguro para la contraseña
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
     // Insertar nuevo usuario con transacción para mayor seguridad
     $conn->begin_transaction();
     
     try {
-        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, id_chofer, password, tipo_usuario) VALUES (?, ?, ?, ?, 'chofer')");
-        $stmt->bind_param("ssss", $name, $email, $choferId, $hashedPassword);
+        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, id_chofer, password, tipo_usuario) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $name, $email, $choferId, $hashedPassword, $userType);
         
         if ($stmt->execute()) {
             $conn->commit();

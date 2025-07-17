@@ -23,6 +23,7 @@ services:
       - "8000:80"
     volumes:
       - ./:/var/www/html
+      - ./js:/var/www/js
     depends_on:
       - db
 
