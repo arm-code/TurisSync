@@ -1,118 +1,154 @@
+Aquí tienes un archivo `README.md` completo y detallado para el proyecto **TurisSync**:
+
+````markdown
 # TurisSync
 
-**TurisSync** es una plataforma de gestión turística desarrollada con PHP y MySQL. Este proyecto está completamente dockerizado para facilitar su instalación y ejecución en cualquier entorno.
+**TurisSync** es una plataforma web para la gestión de usuarios y administración de contenido turístico. Desarrollada con PHP y MariaDB, y contenida completamente en Docker para facilitar su despliegue.
 
-## Requisitos previos
+---
 
-Antes de comenzar, asegúrate de tener instaladas las siguientes herramientas:
+## 🚀 Requisitos
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
+Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu equipo:
 
-> Puedes comprobar si están instalados ejecutando:
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Git](https://git-scm.com/downloads) (opcional pero recomendado)
+
+---
+
+## 📦 Instalación y ejecución
+
+### 1. Clonar el repositorio
+
+Abre tu terminal o consola y ejecuta:
+
 ```bash
-docker -v
-docker-compose -v
-Clonar el repositorio
-Abre tu terminal y clona este repositorio:
-
-bash
-Copy
-Edit
 git clone https://github.com/arm-code/TurisSync.git
 cd TurisSync
-Estructura del proyecto
-csharp
-Copy
-Edit
+````
+
+> Si no tienes Git, puedes descargar el proyecto como `.zip` desde GitHub y extraerlo.
+
+---
+
+### 2. Levantar los contenedores con Docker
+
+Una vez dentro del directorio del proyecto:
+
+```bash
+docker compose up -d
+```
+
+Esto iniciará tres servicios:
+
+* **MariaDB** (Base de datos)
+* **PHP con Apache** (Servidor de backend)
+* **phpMyAdmin** (Interfaz web para gestionar la base de datos)
+
+---
+
+### 3. Verificar servicios
+
+* 🌐 Aplicación (backend PHP): [http://localhost:8000](http://localhost:8000)
+* 🛠️ phpMyAdmin: [http://localhost:8080](http://localhost:8080)
+
+#### Credenciales para phpMyAdmin:
+
+* **Servidor:** `db`
+* **Usuario:** `root`
+* **Contraseña:** `rootpassword`
+
+---
+
+## 📁 Estructura del proyecto
+
+```
 TurisSync/
-├── docker-compose.yml       # Configuración de servicios (base de datos, servidor PHP y phpMyAdmin)
-├── php/                     # Archivos PHP principales (registro, login, conexión a DB)
+│
+├── php/                    # Scripts PHP (login, registro, etc.)
 │   ├── db_connect.php
 │   ├── register.php
-│   ├── login.php
-├── init.sql                 # Script de inicialización para la base de datos
-├── index.html               # Interfaz inicial (puedes expandirlo)
-└── ...
-Primeros pasos
-1. Construir y levantar los contenedores
-Ejecuta el siguiente comando en la raíz del proyecto:
+│   └── login.php
+│
+├── init.sql                # Script de inicialización de la base de datos
+├── docker-compose.yml      # Configuración de servicios Docker
+└── README.md
+```
 
-bash
-Copy
-Edit
-docker-compose up --build
-Esto hará lo siguiente:
+---
 
-Levantará un contenedor de base de datos MariaDB en el puerto 3306.
+## 🧪 Endpoints disponibles
 
-Levantará un servidor Apache con PHP 8.0 en el puerto 8000.
+### POST `/php/register.php`
 
-Levantará una instancia de phpMyAdmin para administrar la base de datos gráficamente en el puerto 8080.
+Registra un nuevo usuario.
 
-Ejecutará el script init.sql para crear la base de datos turisync con sus tablas y datos necesarios.
+**Cuerpo (JSON):**
 
-2. Acceder a la aplicación
-Frontend / API:
-http://localhost:8000
-
-phpMyAdmin:
-http://localhost:8080
-
-Usuario: root
-
-Contraseña: rootpassword
-
-Endpoints disponibles
-Registro de usuario
-POST http://localhost:8000/php/register.php
-
-Body (JSON):
-
-json
-Copy
-Edit
+```json
 {
-  "nombre": "Juan",
-  "email": "juan@correo.com",
+  "nombre": "Juan Pérez",
+  "email": "juan@example.com",
   "password": "123456",
   "tipo_usuario": "turista"
 }
-Inicio de sesión
-POST http://localhost:8000/php/login.php
+```
 
-Body (JSON):
+---
 
-json
-Copy
-Edit
+### POST `/php/login.php`
+
+Inicia sesión.
+
+**Cuerpo (JSON):**
+
+```json
 {
-  "email": "juan@correo.com",
+  "email": "juan@example.com",
   "password": "123456"
 }
-Base de datos
-La base de datos se crea automáticamente al iniciar los contenedores. Si deseas revisar o modificarla, accede a phpMyAdmin en http://localhost:8080.
+```
 
-Apagar los contenedores
-Para detener todo el entorno:
+---
 
-bash
-Copy
-Edit
-docker-compose down
-Si deseas eliminar los volúmenes (y la base de datos):
+## 🐞 Errores comunes
 
-bash
-Copy
-Edit
-docker-compose down -v
-Problemas comunes
-❌ Error Class 'mysqli' not found
-Asegúrate de que el contenedor PHP tenga instaladas las extensiones necesarias. Este proyecto ya lo incluye automáticamente gracias a la configuración de la imagen.
+| Problema                               | Solución                                                                                                               |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Class "mysqli" not found`             | Asegúrate que el contenedor PHP tenga la extensión `mysqli` instalada (ya está corregido en la imagen del Dockerfile). |
+| El puerto 8000 o 8080 ya está en uso   | Cambia el puerto en el `docker-compose.yml` por uno libre.                                                             |
+| Cambios en archivos PHP no se reflejan | Verifica que el volumen esté correctamente montado (`./:/var/www/html`). Reinicia los contenedores si es necesario.    |
 
-Créditos
-Proyecto desarrollado por arm-code
-Dockerización y soporte de despliegue por [colaborador].
+---
 
-Licencia
+## 🧼 Detener y limpiar contenedores
+
+Para detener los servicios:
+
+```bash
+docker compose down
+```
+
+Para eliminar los volúmenes (base de datos incluida):
+
+```bash
+docker compose down -v
+```
+
+---
+
+## 📚 Créditos
+
+Desarrollado por [@arm-code](https://github.com/arm-code).
+Con contribuciones y ayuda de la comunidad.
+
+---
+
+## 📄 Licencia
+
 Este proyecto está bajo la licencia MIT.
+
+```
+
+Puedes guardar este contenido como un archivo llamado `README.md` en la raíz del proyecto. Si necesitas que lo empaquete o suba a tu repo automáticamente, dime y te ayudo.
+```
