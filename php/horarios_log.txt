@@ -13,3 +13,14 @@
 2025-06-05 14:52:11 - Horario creado: {"success":true,"message":"Horario creado exitosamente","horario_id":2}
 2025-06-05 14:52:12 - Solicitud recibida: 
 2025-07-17 12:32:50 - Solicitud recibida: 
+2025-07-17 12:59:53 - Solicitud recibida: {"action":"create","fecha":"2025-07-18","horaInicio":"06:00","horaFin":"13:00","ruta_id":"1","chofer_id":"Alexis Romero Mendoza"}
+2025-07-17 12:59:53 - Error chofer no existe: {"success":false,"message":"El chofer seleccionado no existe o no es v\u00e1lido","chofer_id":"Alexis Romero Mendoza"}
+2025-07-17 13:00:13 - Solicitud recibida: {"action":"create","fecha":"2025-07-18","horaInicio":"06:00","horaFin":"13:00","ruta_id":"1","chofer_id":"alexis.rm162917@gmail.com"}
+2025-07-17 13:00:13 - Error chofer no existe: {"success":false,"message":"El chofer seleccionado no existe o no es v\u00e1lido","chofer_id":"alexis.rm162917@gmail.com"}
+2025-07-17 13:01:56 - Solicitud recibida: {"action":"create","fecha":"2025-07-18","horaInicio":"06:00","horaFin":"13:00","ruta_id":"3","chofer_id":"1"}
+2025-07-17 13:01:56 - Horario creado: {"success":true,"message":"Horario creado exitosamente","horario_id":3}
+2025-07-17 13:02:00 - Solicitud recibida: 
+2025-07-17 13:02:49 - Solicitud recibida: {"action":"create","fecha":"2025-07-18","horaInicio":"13:02","horaFin":"13:03","ruta_id":"2","chofer_id":"2"}
+2025-07-17 13:02:49 - Horario creado: {"success":true,"message":"Horario creado exitosamente","horario_id":4}
+2025-07-17 13:02:50 - Solicitud recibida: 
+2025-07-17 13:04:01 - Solicitud recibida: 
