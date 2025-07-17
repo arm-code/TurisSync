@@ -1,6 +1,4 @@
-Aquí tienes un archivo `README.md` completo y detallado para el proyecto **TurisSync**:
 
-````markdown
 # TurisSync
 
 **TurisSync** es una plataforma web para la gestión de usuarios y administración de contenido turístico. Desarrollada con PHP y MariaDB, y contenida completamente en Docker para facilitar su despliegue.
@@ -137,18 +135,3 @@ docker compose down -v
 
 ---
 
-## 📚 Créditos
-
-Desarrollado por [@arm-code](https://github.com/arm-code).
-Con contribuciones y ayuda de la comunidad.
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT.
-
-```
-
-Puedes guardar este contenido como un archivo llamado `README.md` en la raíz del proyecto. Si necesitas que lo empaquete o suba a tu repo automáticamente, dime y te ayudo.
-```
