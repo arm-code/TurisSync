@@ -12,3 +12,4 @@
 2025-06-05 14:52:11 - Solicitud recibida: {"action":"create","fecha":"2025-06-05","horaInicio":"14:51","horaFin":"16:51","ruta_id":"1","chofer_id":"1"}
 2025-06-05 14:52:11 - Horario creado: {"success":true,"message":"Horario creado exitosamente","horario_id":2}
 2025-06-05 14:52:12 - Solicitud recibida: 
+2025-07-17 12:32:50 - Solicitud recibida: 

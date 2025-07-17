@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             try {
-                const response = await fetch('/php/register.php', {
+                const response = await fetch('php/register.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
