@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Chofer - TurisSync</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="driver-header">
+      <h1 id="driver-username">Chofer: <span id="driver-name">Nombre Chofer</span>
+        <span class="driver-badge">Chofer</span>
+      </h1>
+      <button id="driver-logout" class="btn logout">Cerrar Sesión</button>
+    </header>
+
+    <section class="driver-content">
+      <div class="driver-card">
+        <h2>Mis Horarios</h2>
+        <div id="driver-schedule">
+          <p>Cargando horarios...</p>
+        </div>
+      </div>
+
+      <div class="driver-card">
+        <h2>Mi Ruta Actual</h2>
+        <div id="current-route">
+          <p>Cargando ruta...</p>
+        </div>
+      </div>
+
+      <div class="driver-card">
+        <h2>Estado del Servicio</h2>
+        <div class="status-controls">
+          <button id="start-service" class="btn">Iniciar Servicio</button>
+          <button id="end-service" class="btn btn-secondary" disabled>Finalizar Servicio</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/chofer.js"></script>
+</body>
+</html>

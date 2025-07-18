@@ -371,3 +371,90 @@ textarea {
         width: 90%;
     }
 }
+
+
+
+/* Estilos específicos para choferes */
+.driver-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #1976D2;
+    color: white;
+}
+
+.driver-badge {
+    background: #FFC107;
+    color: #333;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+
+.driver-content {
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.driver-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.status-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+#start-service {
+    background: #4CAF50;
+}
+
+#start-service:hover {
+    background: #388E3C;
+}
+
+#end-service {
+    background: #F44336;
+}
+
+#end-service:hover {
+    background: #D32F2F;
+}
+
+.route-info {
+    margin-top: 15px;
+}
+
+.route-stop {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.stop-time {
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.stop-name {
+    flex-grow: 1;
+}
+
+.stop-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ddd;
+}
+
+.stop-status.completed {
+    background: #4CAF50;
+}

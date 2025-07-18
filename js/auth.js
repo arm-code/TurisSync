@@ -38,12 +38,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const data = await response.json();
 
-        if (data.success) {
+        // Dentro del evento submit del loginForm
+      if (data.success) {
           localStorage.setItem('user', JSON.stringify(data.user));
-          window.location.href = 'admin.html';
-        } else {
-          alert(data.message || 'Error al iniciar sesión');
-        }
+          
+          // Redirección basada en el tipo de usuario
+          if (data.user.user_type_id === 1) {
+              window.location.href = 'admin.html';
+          } else if (data.user.user_type_id === 2) {
+              window.location.href = 'chofer.html';
+          } else {
+              // Manejo para otros tipos de usuario si los hay
+              alert('Tipo de usuario no reconocido');
+          }
+      }
       } catch (error) {
         console.error('Error:', error);
         alert('Error al conectar con el servidor');
