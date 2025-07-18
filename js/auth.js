@@ -110,26 +110,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Función para cargar los tipos de usuario desde la base de datos
   async function loadUserTypes() {
-    try {
-      const response = await fetch('php/usuarios.php');
-      const data = await response.json();
+  try {
+    const response = await fetch('php/usuarios.php');
+    const data = await response.json();
 
-      if (data.success === true) {
-        console.log('Tipos de usuario cargados:', data.types);
-        const select = document.getElementById('register-user-type');
-        data.types.forEach((type) => {
-          const option = document.createElement('option');
+    if (data.success === true) {
+      console.log('Tipos de usuario cargados:', data.types);
+      const select = document.getElementById('register-user-type');
 
-          option.value = type;
-          option.textContent = type;
-          select.appendChild(option);
-          console.log('Opción agregada:', option);
-        });
-      } else {
-        console.error('Error al cargar tipos de usuario:', data.message);
-      }
-    } catch (error) {
-      console.error('Error:', error);
+      // Limpiar opciones anteriores si las hay
+      select.innerHTML = '<option value="">Selecciona un tipo de usuario</option>';
+
+      data.types.forEach((type) => {
+        const option = document.createElement('option');
+        option.value = type.id; // Asignar el id como valor
+        option.textContent = type.name; // Mostrar el nombre
+        select.appendChild(option);
+        console.log('Opción agregada:', option);
+      });
+    } else {
+      console.error('Error al cargar tipos de usuario:', data.message);
     }
+  } catch (error) {
+    console.error('Error:', error);
   }
+}
+
 });

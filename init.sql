@@ -1,7 +1,17 @@
 -- Borrar y crear base de datos
-DROP DATABASE IF EXISTS turisync;
-CREATE DATABASE turisync CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+-- DROP DATABASE IF EXISTS turisync;
+-- CREATE DATABASE turisync CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+-- Conectarse a la base de datos
 USE turisync;
+
+-- Borrar tablas en orden correcto (evitando errores por claves foráneas)
+DROP TABLE IF EXISTS bitacora;
+DROP TABLE IF EXISTS vehiculos;
+DROP TABLE IF EXISTS horarios;
+DROP TABLE IF EXISTS paradas;
+DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS rutas;
+DROP TABLE IF EXISTS user_types;
 
 -- Tabla: user_types
 CREATE TABLE user_types (
@@ -53,7 +63,7 @@ CREATE TABLE paradas (
   FOREIGN KEY (ruta_id) REFERENCES rutas(id) ON DELETE CASCADE
 );
 
--- Tabla: vehiculos (opcional sugerida)
+-- Tabla: vehiculos
 CREATE TABLE vehiculos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   modelo VARCHAR(100) NOT NULL,
@@ -63,7 +73,7 @@ CREATE TABLE vehiculos (
   FOREIGN KEY (chofer_id) REFERENCES usuarios(id)
 );
 
--- Tabla: bitacora (opcional sugerida)
+-- Tabla: bitacora
 CREATE TABLE bitacora (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario_id INT,
@@ -85,14 +95,13 @@ INSERT INTO usuarios (id, nombre, email, id_chofer, password, user_type_id, fech
 -- Inserción de rutas
 INSERT INTO rutas (id, nombre, descripcion, fecha_creacion) VALUES
 (1, 'Riveras del Bravo', '', '2025-06-03 23:47:15'),
-(2, 'Finca Bonita', '', '2025-06-03 23:47:15')
+(2, 'Finca Bonita', '', '2025-06-03 23:47:15'),
 (3, 'Valle de Juarez', '', '2025-06-03 23:47:15'),
 (4, 'Valle de Juarez 2', '', '2025-06-03 23:47:15'),
 (5, 'Tierra Nueva 1', '', '2025-06-03 23:47:15'),
 (6, 'Tierra Nueva 2', '', '2025-06-03 23:47:15'),
 (7, 'Express 1A', '', '2025-06-03 23:47:15'),
 (8, 'Express 1B', '', '2025-06-03 23:47:15');
-
 
 -- Inserción de horarios
 INSERT INTO horarios (id, fecha, hora_inicio, hora_fin, ruta_id, chofer_id, estado, fecha_creacion) VALUES
@@ -106,5 +115,3 @@ INSERT INTO paradas (id, nombre, direccion, orden, ruta_id) VALUES
 (4, 'Smart Plaza Juarez', 'Plaza Juarez 1515', 3, 1),
 (5, 'Smart Plaza Juarez Norte', 'Plaza Juarez Norte 1515', 4, 1),
 (6, 'Smart Plaza Juarez Sur', 'Plaza Juarez Sur 1515', 5, 1);
-
-
