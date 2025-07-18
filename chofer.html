@@ -8,36 +8,86 @@
 </head>
 <body>
   <div class="app-container">
-    <header class="driver-header">
+    <!-- Header similar al admin pero adaptado para chofer -->
+    <header class="admin-header">
       <h1 id="driver-username">Chofer: <span id="driver-name">Nombre Chofer</span>
         <span class="driver-badge">Chofer</span>
       </h1>
-      <button id="driver-logout" class="btn logout">Cerrar Sesión</button>
+      <button id="logout-btn" class="btn logout">Cerrar Sesión</button>
     </header>
 
-    <section class="driver-content">
-      <div class="driver-card">
+    <!-- Tabs simplificados para chofer -->
+    <nav class="admin-tabs">
+      <button id="tab-horarios" class="tab-button active" data-tab="horarios">Mis Horarios</button>
+      <button id="tab-ruta" class="tab-button" data-tab="ruta">Mi Ruta Actual</button>
+    </nav>
+
+    <!-- Sección de Horarios (similar estructura a admin pero simplificada) -->
+    <section id="horarios-section" class="tab-content active">
+      <div class="section-header">
         <h2>Mis Horarios</h2>
-        <div id="driver-schedule">
-          <p>Cargando horarios...</p>
-        </div>
+        <button id="refresh-schedule" class="btn">Actualizar</button>
       </div>
 
-      <div class="driver-card">
+      <div id="lista-horarios" class="schedule-list">
+        <div class="schedule-item">
+          <div class="schedule-header">
+            <h3>Lunes 15 Mayo</h3>
+            <span class="status-badge active">Activo</span>
+          </div>
+          <div class="schedule-details">
+            <div class="detail">
+              <span class="label">Horario</span>
+              <span class="value">08:00 - 16:00</span>
+            </div>
+            <div class="detail">
+              <span class="label">Ruta</span>
+              <span class="value">Ruta Centro</span>
+            </div>
+          </div>
+        </div>
+        <!-- Más horarios se cargarán dinámicamente -->
+      </div>
+    </section>
+
+    <!-- Sección de Ruta Actual -->
+    <section id="ruta-section" class="tab-content">
+      <div class="section-header">
         <h2>Mi Ruta Actual</h2>
-        <div id="current-route">
-          <p>Cargando ruta...</p>
-        </div>
-      </div>
-
-      <div class="driver-card">
-        <h2>Estado del Servicio</h2>
         <div class="status-controls">
           <button id="start-service" class="btn">Iniciar Servicio</button>
           <button id="end-service" class="btn btn-secondary" disabled>Finalizar Servicio</button>
         </div>
       </div>
+
+      <div class="route-info">
+        <h3>Ruta Norte</h3>
+        <p class="route-description">Recorrido por la zona norte de la ciudad</p>
+        
+        <div class="route-stops">
+          <h4>Paradas:</h4>
+          <ol>
+            <li class="route-stop">
+              <span class="stop-time">08:00</span>
+              <span class="stop-name">Estación Central</span>
+              <span class="stop-status"></span>
+            </li>
+            <!-- Más paradas se cargarán dinámicamente -->
+          </ol>
+        </div>
+      </div>
     </section>
+
+    <!-- Modal reutilizado para detalles (opcional) -->
+    <div id="details-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="modal-title">Detalles</h3>
+        <div id="modal-content">
+          <!-- Contenido dinámico -->
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="js/chofer.js"></script>
