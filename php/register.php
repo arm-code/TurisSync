@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->begin_transaction();
     
     try {
-        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, id_chofer, password, tipo_usuario) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, id_chofer, password, user_type_id) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $name, $email, $choferId, $hashedPassword, $userType);
         
         if ($stmt->execute()) {
