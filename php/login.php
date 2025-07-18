@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Buscar por email
-    $stmt = $conn->prepare("SELECT id, nombre, email, tipo_usuario, password FROM usuarios WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, nombre, email, user_type_id, password FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['nombre'];
             $_SESSION['user_email'] = $user['email'];
-            $_SESSION['user_type'] = $user['tipo_usuario'];
+            $_SESSION['user_type'] = $user['user_type_id'];
 
             // No enviamos el hash al frontend
             unset($user['password']);

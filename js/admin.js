@@ -284,33 +284,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para cargar choferes
     async function loadChoferes() {
-        try {
-            const response = await fetch('php/usuarios.php?action=getChoferes');
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+        const response = await fetch('php/getAllChoferes.php');
+        
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.message || 'Error al obtener datos');
+        }
+
+        const select = document.getElementById('chofer');
+        if (!select) return;
+
+        // Limpiar y agregar opción por defecto
+        select.innerHTML = '<option value="">Seleccione un chofer</option>';
+
+        // Agregar cada chofer al select
+        data.choferes.forEach(chofer => {
+            const option = document.createElement('option');
+            option.value = chofer.id;
             
-            const data = await response.json();
+            // Mostrar nombre + ID chofer + email (si existe)
+            let displayText = `${chofer.nombre}`;
+            if (chofer.id_chofer) displayText += ` (ID: ${chofer.id_chofer})`;
+            if (chofer.email) displayText += ` - ${chofer.email}`;
             
-            if (data.success) {
-                const select = document.getElementById('chofer');
-                if (select) {
-                    select.innerHTML = '<option value="">Seleccione un chofer</option>';
-                    
-                    data.choferes.forEach(chofer => {
-                        const option = document.createElement('option');
-                        option.value = chofer.id;
-                        option.textContent = `${chofer.nombre}${chofer.email ? ` (${chofer.email})` : ''}`;
-                        select.appendChild(option);
-                    });
-                }
-            } else {
-                console.error('Error al cargar choferes:', data.message);
-                alert('Error al cargar la lista de choferes');
-            }
-        } catch (error) {
-            console.error('Error al cargar choferes:', error);
-            alert('Error al cargar la lista de choferes');
+            option.textContent = displayText;
+            select.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Error al cargar choferes:', error);
+        alert('Error al cargar choferes: ' + error.message);
+        
+        // Opcional: Mostrar feedback en la interfaz
+        const select = document.getElementById('chofer');
+        if (select) {
+            select.innerHTML = '<option value="">Error al cargar choferes</option>';
         }
     }
+}
 
     // Función para cargar rutas en el selector
     async function loadRutasForSelect() {
